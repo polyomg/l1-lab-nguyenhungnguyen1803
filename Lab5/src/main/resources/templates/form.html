@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kết quả</title>
+</head>
+<body>
+<h2>Kết quả xử lý</h2>
+<ul>
+    <li>Họ tên: <span th:text="${name}"></span></li>
+    <li>Tuổi: <span th:text="${age}"></span></li>
+    <li>Điểm: <span th:text="${mark}"></span></li>
+    <li>Giới tính: <span th:text="${gender}"></span></li>
+    <li>Ngày sinh: <span th:text="${#dates.format(birth, 'dd/MM/yyyy')}"></span></li>
+    <li>File đã lưu: <span th:text="${file}"></span></li>
+    <li>Cookie: <span th:text="${cookie}"></span></li>
+    <li>Session: <span th:text="${session}"></span></li>
+</ul>
+
+<a th:href="@{/home}">Quay lại form</a>
+</body>
+</html>
