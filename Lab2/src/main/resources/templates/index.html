@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - Danh sách bài tập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: 50px auto;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #eee;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h2>Danh sách các bài tập Lab</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Bài</th>
+        <th>Chức năng</th>
+        <th>Đường dẫn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Bài 1</td>
+        <td>Form với 3 button (POST, GET, Action)</td>
+        <td><a href="/ctrl/ok">/ctrl/ok</a></td>
+    </tr>
+    <tr>
+        <td>Bài 2</td>
+        <td>Đọc @PathVariable và @RequestParam</td>
+        <td><a href="/param/form">/param/form</a></td>
+    </tr>
+    <tr>
+        <td>Bài 3</td>
+        <td>Nhập sản phẩm, hiển thị dữ liệu (ModelAttribute)</td>
+        <td><a href="/product/form">/product/form</a></td>
+    </tr>
+    <tr>
+        <td>Bài 4</td>
+        <td>Sản phẩm mặc định + sản phẩm vừa lưu + danh sách</td>
+        <td><a href="/product/form">/product/form</a></td>
+    </tr>
+    <tr>
+        <td>Bài 5</td>
+        <td>Forward, Redirect, ResponseBody</td>
+        <td><a href="/a">/a</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
