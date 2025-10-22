@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ</title>
+</head>
+<body>
+<h2 th:text="${message}">Welcome</h2>
+<p>Đây là trang chủ người dùng.</p>
+
+<a href="/auth/login">Đăng nhập</a> |
+<a href="/admin/home/index">Trang Admin</a>
+</body>
+</html>
