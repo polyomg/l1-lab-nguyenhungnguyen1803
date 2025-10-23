@@ -82,15 +82,26 @@ public class MailController {
     // Hàm lưu file đính kèm tạm thời
     private String saveAttachments(MultipartFile[] attachments) throws IOException {
         if (attachments == null || attachments.length == 0) return null;
+
         StringBuilder sb = new StringBuilder();
+
+        // ✅ Tạo thư mục uploads tại thư mục gốc của project
+        File uploadDir = new File(System.getProperty("user.dir"), "uploads");
+        if (!uploadDir.exists()) {
+            uploadDir.mkdirs();
+        }
+
         for (MultipartFile file : attachments) {
             if (!file.isEmpty()) {
-                File savedFile = new File("uploads", file.getOriginalFilename());
-                savedFile.getParentFile().mkdirs();
+                File savedFile = new File(uploadDir, file.getOriginalFilename());
                 file.transferTo(savedFile);
+
+                // Lưu lại đường dẫn tuyệt đối của file
                 sb.append(savedFile.getAbsolutePath()).append(";");
             }
         }
+
         return sb.toString();
     }
+
 }

@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Trang quản trị</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 40px; }
+        .admin-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            width: 600px;
+            margin: auto;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        h2 { color: #2d3436; }
+        a {
+            text-decoration: none;
+            color: #0984e3;
+            margin: 0 10px;
+        }
+        a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-<h2 th:text="${message}">Admin Home</h2>
-<p>Chào mừng bạn đến trang quản trị hệ thống!</p>
+<div class="admin-box">
+    <h2 th:text="${message}">Admin Home</h2>
+    <p>Chào mừng bạn đến trang quản trị hệ thống!</p>
 
-<a href="/home/index">Về trang chủ</a>
+    <p>Xin chào, <b th:text="${session.user.fullname}"></b>!</p>
+    <p><b>Email:</b> <span th:text="${session.user.email}"></span></p>
+
+    <hr>
+    <a href="/home/index">Về trang chủ</a> |
+    <a href="/auth/logout">Đăng xuất</a>
+</div>
 </body>
 </html>

@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Trang chủ</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; background-color: #ecf0f1; }
+        h2 { color: #2d3436; }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            color: #0984e3;
+            margin: 0 10px;
+        }
+        a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
-<h2 th:text="${message}">Welcome</h2>
-<p>Đây là trang chủ người dùng.</p>
+<div class="box">
+    <h2 th:text="${message}">Welcome</h2>
+    <p>Đây là trang chủ người dùng.</p>
 
-<a href="/auth/login">Đăng nhập</a> |
-<a href="/admin/home/index">Trang Admin</a>
+    <div th:if="${session.user == null}">
+        <a href="/auth/login">Đăng nhập</a>
+    </div>
+
+    <div th:if="${session.user != null}">
+        <p>Xin chào, <b th:text="${session.user.fullname}"></b>!</p>
+        <p>Vai trò: <b th:text="${session.user.admin ? 'Admin' : 'Người dùng'}"></b></p>
+        <a href="/auth/logout">Đăng xuất</a>
+    </div>
+
+    <div th:if="${session.user != null and session.user.admin}">
+        <hr>
+        <a href="/admin/home/index">Trang quản trị</a>
+    </div>
+</div>
 </body>
 </html>

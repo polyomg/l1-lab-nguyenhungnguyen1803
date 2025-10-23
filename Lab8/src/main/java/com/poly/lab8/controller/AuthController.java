@@ -29,7 +29,6 @@ public class AuthController {
                                @RequestParam String password,
                                Model model) {
 
-        // ✅ Gọi qua service thay vì DAO static
         Account user = accountService.findByUsername(username);
 
         if (user == null || !user.getPassword().equals(password)) {
@@ -47,6 +46,18 @@ public class AuthController {
             return "redirect:" + securityUri;
         }
 
+        // ✅ Nếu là admin → vào trang admin
+        if (user.isAdmin()) {
+            return "redirect:/admin/home/index";
+        }
+
+        // ✅ Còn lại (user thường) → vào trang chủ
         return "redirect:/home/index";
     }
+    @GetMapping("/auth/logout")
+    public String logout() {
+        session.invalidate(); // xóa session
+        return "redirect:/auth/login";
+    }
+
 }
